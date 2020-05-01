@@ -8,13 +8,12 @@ end
 #  2. Combien d'handle contiennent un numéro ?
 #   #/ Autre methode
 #   if handle =~ /\d/          # prochain Test 
-
 def numero_handle(list)
   search = 0
-  list.each do |email|
-  email.split("").each do |number|
-      for i in (1..9)
-        if number == String(i)
+  list.each do |email|             #https://www.dotnetperls.com/split-ruby
+  email.split("").each do |number| #Con split podemos obtener los caracteres de una cadena.
+      for i in (1..9)              #Pass an empty string literal ("") to the split method.
+        if number == String(i)     #The length of the array equals the length of the string.
           found = true 
           search += 1 
           break 
@@ -44,7 +43,6 @@ end
 # 4. Combien commencent par une majuscule (première lettre juste après le @) ?
 # Metóde trouve en: https://www.rubyguides.com/2015/06/ruby-regex/
 #                   http://rubytutorial.wikidot.com/metodos-argumentos                      
-
 def commence_mayuscule_handle(list)
   search = 0
   list.each do |email|
@@ -115,23 +113,78 @@ end
 
 
 # 9. Quelle est la position dans l'array de la personne @epenser ?
+def search_handle(list)
+  search = "@epenser"
+  found = list.index(search) # Trouve en https://stackoverrun.com/es/q/342524
+  return found               # https://parzibyte.me/blog/2019/02/11/comprobar-si-elemento-existe-buscar-indice-ruby/
+end 
 
+# Avec cette methode je touvre "@epenser dans la place 373"
+#def search_handle(list)
+#  search = 0
+#  i = 1
+#  list.each do |handle|
+#    i += 1
+#    search = i if handle == "@epenser"
+#  end
+#  return search
+#end
 
 
 # - List de commandes del programe ?
 def perform(list)
-  puts "Vóila, dans cette liste il y'a :"
-  puts "1. #{nombre_handle(list)}"
-  puts "2. #{numero_handle(list)}"
-  puts "3. #{aude_handle(list)}"
-  puts "4. #{commence_mayuscule_handle(list)}"
-  puts "5. #{mayuscule_handle(list)}"
-  puts "6. #{underscore_handle(list)}"
-  puts "7. #{alphabetical_handle(list)}"
-  puts "8. "
-  puts "9. "
+  puts "Vóila, on va commence le voyage:"
+  print " > Presiona enter"
+  contador = gets.to_i
+  puts "1. Dans cette list il y'a #{nombre_handle(list)} emails "
+  puts ""
+  print " > Presiona enter"
+  contador = gets.to_i
+  puts "2. #{numero_handle(list)} ont de numero "
+  puts ""
+  print " > Presiona enter"
+  contador = gets.to_i
+  puts "3. En #{aude_handle(list)} il y'a le nom aude  "
+  puts ""
+  print " > Presiona enter"
+  contador = gets.to_i
+  puts "4. #{commence_mayuscule_handle(list)} commencent par mayuscule "
+  puts ""
+  print " > Presiona enter"
+  contador = gets.to_i
+  puts "5. En #{mayuscule_handle(list)} il y'a au moins uns mayuscule "
+  puts ""
+  print " > Presiona enter"
+  contador = gets.to_i
+  puts "6. En #{underscore_handle(list)} il y'a underscore"
+  puts ""
+  print " > Presiona enter"
+  contador = gets.to_i
+  puts "7. Liste organice par ordre alphabetique "
+  puts ""
+  print " > Presiona enter"
+  contador = gets.to_i
+  print "#{alphabetical_handle(list)} "
+  puts ""
+  print " > Presiona enter"
+  contador = gets.to_i
+  puts "8. #{} " 
+  puts ""
+  print " > Presiona enter"
+  contador = gets.to_i
+  puts "9. et @epenser se trouve dans la position #{search_handle(list)} " 
+  puts ""
+  print " > Presiona enter"
+  contador = gets.to_i
+  puts "10. C'est la fin Merci.... jejeje "
+  puts ""
+  puts ""
 
 end
+
+print "Presiona enter para comenzar "
+contador = gets.to_i
+puts ">>#{contador}"
 
 perform(list_emails)
 
